@@ -9,6 +9,6 @@ export class ProductsService {
   constructor(private readonly http: HttpClient) {}
 
   loadProducts() {
-    return this.http.get<Product[]>('http://localhost:4000/users/authenticate');
+    return this.http.get<Product[]>('http://localhost:4000/products');
   }
 }
