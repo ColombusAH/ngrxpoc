@@ -13,10 +13,34 @@ import { User, UserCreds } from '../types';
 import { Product } from '../types/product.type';
 
 // array in local storage for registered users
-let users = [
-  { id: '1', username: 'user', password: '1234' },
+let users = [{ id: '1', username: 'user', password: '1234' }];
+const products: Product[] = [
+  {
+    id: '1ec58d8d-03bd-4d08-9d3a-8dd6667c5f28',
+    available: false,
+    name: 'Sheena',
+  },
+  {
+    id: 'c656bec9-2dcd-4004-a299-ca6b21741a4d',
+    available: true,
+    name: 'Barber',
+  },
+  {
+    id: 'adf6a98e-ae4e-45e3-bc9d-9121af035b65',
+    available: false,
+    name: 'Mckee',
+  },
+  {
+    id: '7e6a2ce7-1cd8-448e-8a09-0182bb5397af',
+    available: false,
+    name: 'Susanna',
+  },
+  {
+    id: 'e7940336-5448-4e19-972e-51cef5373c7c',
+    available: true,
+    name: 'Mcleod',
+  },
 ];
-const products: Product[] = [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -50,7 +74,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return deleteUser('1');
         case url.endsWith('/products') && method === 'GET':
           return loadProducts();
-          default:
+        default:
           // pass through any requests not handled above
           return next.handle(request);
       }
@@ -87,18 +111,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok(users);
     }
 
-    function getUserById(id:string) {
+    function getUserById(id: string) {
       if (!isLoggedIn()) return unauthorized();
 
       const user = users.find((x) => x.id === id);
       return ok(user);
     }
 
-    function updateUser(id:string) {
+    function updateUser(id: string) {
       if (!isLoggedIn()) return unauthorized();
 
       let params = body;
-      let user = users.find((x) => x.id ===id);
+      let user = users.find((x) => x.id === id);
 
       // only update password if entered
       if (!params.password) {
@@ -112,7 +136,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok();
     }
 
-    function deleteUser(id:string) {
+    function deleteUser(id: string) {
       if (!isLoggedIn()) return unauthorized();
 
       users = users.filter((x) => x.id !== id);
@@ -146,8 +170,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       return ok(products);
     }
   }
-
- 
 }
 
 export const fakeBackendProvider = {

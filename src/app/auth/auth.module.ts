@@ -4,8 +4,6 @@ import { AuthService } from './auth.service';
 import { StoreModule } from '@ngrx/store';
 import * as AuthFeatureStore from './store';
 import { EffectsModule } from '@ngrx/effects';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { fakeBackendProvider } from '../interceptors/fake-backend.interceptor';
 import { AuthEffects } from './store/auth.effects';
 
 @NgModule({
@@ -18,9 +16,6 @@ import { AuthEffects } from './store/auth.effects';
     ),
     EffectsModule.forFeature([AuthEffects]),
   ],
-  providers: [
-    AuthService,
-    fakeBackendProvider,
-  ],
+  providers: [AuthService],
 })
 export class AuthModule {}

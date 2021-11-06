@@ -7,7 +7,7 @@ import { User, UserCreds } from '../types';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   login(creds: UserCreds) {
     return this.http.post<User>('http://localhost:4000/users/authenticate', creds);

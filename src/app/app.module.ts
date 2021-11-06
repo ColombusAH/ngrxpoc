@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     AuthModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
