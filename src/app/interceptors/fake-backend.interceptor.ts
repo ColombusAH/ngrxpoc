@@ -19,26 +19,31 @@ const products: Product[] = [
     id: '1ec58d8d-03bd-4d08-9d3a-8dd6667c5f28',
     available: false,
     name: 'Sheena',
+    dealIncluded: true,
   },
   {
     id: 'c656bec9-2dcd-4004-a299-ca6b21741a4d',
     available: true,
     name: 'Barber',
+    dealIncluded: true,
   },
   {
     id: 'adf6a98e-ae4e-45e3-bc9d-9121af035b65',
     available: false,
     name: 'Mckee',
+    dealIncluded: false,
   },
   {
     id: '7e6a2ce7-1cd8-448e-8a09-0182bb5397af',
     available: false,
     name: 'Susanna',
+    dealIncluded: false,
   },
   {
     id: 'e7940336-5448-4e19-972e-51cef5373c7c',
     available: true,
     name: 'Mcleod',
+    dealIncluded: false,
   },
 ];
 
