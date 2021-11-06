@@ -10,11 +10,13 @@ import {
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { User, UserCreds } from '../types';
+import { Product } from '../types/product.type';
 
 // array in local storage for registered users
 let users = [
   { id: '1', username: 'user', password: '1234' },
 ];
+const products: Product[] = [];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -33,6 +35,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function handleRoute() {
       switch (true) {
+        // for user stuff
         case url.endsWith('/users/authenticate') && method === 'POST':
           return authenticate();
         case url.endsWith('/users/register') && method === 'POST':
@@ -45,7 +48,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return updateUser('1');
         case url.match(/\/users\/\d+$/) && method === 'DELETE':
           return deleteUser('1');
-        default:
+        case url.endsWith('/products') && method === 'GET':
+          return loadProducts();
+          default:
           // pass through any requests not handled above
           return next.handle(request);
       }
@@ -137,7 +142,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       const urlParts = url.split('/');
       return parseInt(urlParts[urlParts.length - 1]);
     }
+    function loadProducts() {
+      return ok(products);
+    }
   }
+
+ 
 }
 
 export const fakeBackendProvider = {
