@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from './home.service';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/types';
+import { HomeFacadeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,10 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private readonly homeService: HomeService) {}
+  public readonly isLoggedIn$: Observable<boolean>;
+  constructor(private readonly homeService: HomeFacadeService) {
+    this.isLoggedIn$ = this.homeService.isLoggedIn$;
+  }
 
   ngOnInit(): void {}
   login() {
