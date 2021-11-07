@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LayoutFacadeService } from './layout.facade.service';
 
 @Component({
@@ -8,7 +9,14 @@ import { LayoutFacadeService } from './layout.facade.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent implements OnInit {
-  constructor(private readonly layoutService: LayoutFacadeService) {}
+  public readonly isMenuOpen$: Observable<boolean>;
+  constructor(private readonly layoutService: LayoutFacadeService) {
+    this.isMenuOpen$ = this.layoutService.isMenuOpen$;
+  }
 
   ngOnInit(): void {}
+
+  toggleMenu() {
+    this.layoutService.toggleMenu();
+  }
 }
