@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/types';
-import { HomeFacadeService } from './home.service';
+import { HomeFacadeService } from './home.facade.service';
 
 @Component({
   selector: 'app-home',
