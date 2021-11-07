@@ -10,11 +10,18 @@ import { ProductsFacadeService } from './product.facade.service';
 })
 export class ProductsComponent implements OnInit {
   products$: Observable<Product[]>;
+
+  filteredProducts$: Observable<Product[]>;
   constructor(private readonly productService: ProductsFacadeService) {
     this.products$ = this.productService.products$;
+    this.filteredProducts$ = this.productService.filteredProducts$;
   }
 
   ngOnInit(): void {
     this.productService.loadAllProducts();
+  }
+
+  changeFilter() {
+    this.productService.changeFilter({ available: true });
   }
 }

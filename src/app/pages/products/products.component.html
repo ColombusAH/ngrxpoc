@@ -1,4 +1,10 @@
-<p>products works!</p>
+<p>products</p>
 <ng-container *ngFor="let product of products$ | async">
+  <h3>{{ product.name }}</h3>
+</ng-container>
+
+<button (click)="changeFilter()">changeFilter</button>
+<p>filtered products</p>
+<ng-container *ngFor="let product of filteredProducts$ | async">
   <h3>{{ product.name }}</h3>
 </ng-container>
