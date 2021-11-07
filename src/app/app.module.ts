@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CoreModule } from './core/core.module';
+import { LayoutModule } from './shared/components/layout/layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { CoreModule } from './core/core.module';
     }),
     AuthModule,
     CoreModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
