@@ -20,7 +20,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'auth',
+        path: 'auth/:mode',
         loadChildren: () =>
           import('./pages/auth/auth.module').then((m) => m.AuthModule),
       },

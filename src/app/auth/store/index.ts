@@ -1,2 +1,2 @@
 export * from './auth.reducer';
-export * from './auth.actions';
+export * as AuthActions from './auth.actions';
