@@ -10,7 +10,6 @@ export const AuthFeatureKey = 'Auth';
 export const authReducer = createReducer(
   initialAuthState,
   on(AuthActions.loginSucceed, (state, { type, ...user }) => {
-    console.log(user);
     return {
       ...state,
       currentUser: user,

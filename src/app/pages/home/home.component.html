@@ -1,9 +1,6 @@
 <p>home works!</p>
-<a *ngIf="!(isLoggedIn$ | async); else links" [routerLink]="['/auth/signIn']"
-  >login</a
->
-<ng-template #links>
-  <div>
+
+  <div *ngIf="isLoggedIn$ | async">
     <a [routerLink]="['/products']">go to products</a>
   </div>
-</ng-template>
+

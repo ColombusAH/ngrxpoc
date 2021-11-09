@@ -20,7 +20,6 @@ export class AuthComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-    this.form.valueChanges.subscribe(console.log);
   }
 
   get passwordControl() {
@@ -34,8 +33,6 @@ export class AuthComponent implements OnInit {
 
   submit(e: Event) {
     e.preventDefault();
-    console.log(this.form.value);
-    
     this.store.dispatch(AuthActions.login(this.form.value));
   }
 }
