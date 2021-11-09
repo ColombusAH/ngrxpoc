@@ -23,7 +23,7 @@ export class AuthEffects {
           .login(creds)
           .pipe(tap(u =>{
             const {returnUrl} =this.router.routerState.snapshot.root.queryParams;
-            this.router.navigate([returnUrl])
+            this.router.navigate([returnUrl || ''])
           } ),map((user) => AuthActions.loginSucceed(user)))
       )
     )
