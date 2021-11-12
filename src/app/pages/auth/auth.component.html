@@ -34,6 +34,21 @@
                 </span>
               </div>
             </div>
+            <div *ngIf="(signMode$ | async) === 'signUp'" class="field">
+              <label for="" class="label">Confirm Password</label>
+              <div  class="control has-icons-left">
+                <input
+                  type="password"
+                  placeholder="*******"
+                  class="input"
+                  required
+                  formControlName="confirmPassword"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+            </div>
             <div class="field">
               <button
                 type="submit"
@@ -41,8 +56,21 @@
                 (click)="submit($event)"
                 class="button is-success"
               >
-                Login
+                Let's go
               </button>
+              <button
+              *ngIf="(signMode$ | async) === 'signIn'; else goToLoginTemplate"
+              [routerLink]="['/auth/signUp']"
+                type="button"
+                class="button is-link ml-1"
+              >
+                SignUp
+              </button>
+              <ng-template #goToLoginTemplate>
+                <button [routerLink]="['/auth/signIn']" type="button" class="button is-link ml-1">
+                  SignIn
+              </button>
+              </ng-template>
             </div>
           </form>
         </div>

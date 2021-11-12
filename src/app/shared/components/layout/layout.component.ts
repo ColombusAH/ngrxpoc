@@ -10,8 +10,10 @@ import { LayoutFacadeService } from './layout.facade.service';
 })
 export class LayoutComponent implements OnInit {
   public readonly isMenuOpen$: Observable<boolean>;
+  public readonly isUserLoggedIn$: Observable<boolean>;
   constructor(private readonly layoutService: LayoutFacadeService) {
     this.isMenuOpen$ = this.layoutService.isMenuOpen$;
+    this.isUserLoggedIn$ = this.layoutService.isUserLoggedIn$;
   }
 
   ngOnInit(): void {}
